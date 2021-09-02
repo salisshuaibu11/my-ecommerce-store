@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Head from "next/head";
+import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useCart } from "../hooks/use-cart";
@@ -28,12 +29,14 @@ export default function Home() {
             const { id, title, image, description, price } = product;
             return (
               <li key={id} className={styles.card}>
-                <a href="https://nextjs.org/docs" className={styles.card}>
-                  <img src={image} alt={title} />
-                  <h2>{title}</h2>
-                  <p>${price}</p>
-                  <p>{description}</p>
-                </a>
+                <Link href={`/products/${id}`}>
+                  <a className={styles.card}>
+                    <img src={image} alt={title} />
+                    <h2>{title}</h2>
+                    <p>${price}</p>
+                    <p>{description}</p>
+                  </a>
+                </Link>
                 <p>
                   <button
                     className={styles.button}
